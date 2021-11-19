@@ -9,6 +9,8 @@ if ($env:sonarr_episodefile_path -or $env:radarr_movie_path) {
    $timeReadable = Get-Date
    $logPath = "$($logDir)\$($timeScriptRun).log"
    Add-Content $logPath "Run Time: $($timeReadable)"
+   $envVar = Get-ChildItem env:
+   Add-Content $logPath $envVar
    if ($env:sonarr_episodefile_path) {
       $fullPath = $env:sonarr_episodefile_path
       $itemPath = Split-Path $env:sonarr_episodefile_path
